@@ -1,0 +1,20 @@
+{
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": false,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "rewriteRelativeImportExtensions": true
+  }
+}

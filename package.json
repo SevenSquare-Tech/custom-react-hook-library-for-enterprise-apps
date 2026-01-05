@@ -1,0 +1,398 @@
+{
+  "name": "custom-react-hook-library-for-enterprise-apps",
+  "version": "5.1.0",
+  "description": "A collection of beautiful (and hopefully useful) React hooks to speed-up your components and hooks development",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint src/ --ext .ts",
+    "build-types": "tsc --project ./tsconfig.types.json",
+    "build-cjs": "tsc --project ./tsconfig.cjs.json",
+    "build-esm": "tsc --project ./tsconfig.esm.json",
+    "build": "npx del-cli dist && npm run build-cjs && npm run build-esm && npm run build-types && echo 'Successfully built'",
+    "build-doc": "npx del-cli dist-ghpages && node scripts/generate-doc-append-types.js && npx styleguidist build",
+    "test": "nyc mocha --recursive --exit \"./test/**/*.spec.+(js|jsx)\"",
+    "test:watch": "npm run test -- --watch",
+    "start": "npx styleguidist server",
+    "semantic-release": "semantic-release"
+  },
+  "browserslist": [
+    ">1%",
+    "last 1 version",
+    "Firefox ESR",
+    "not dead"
+  ],
+  "keywords": [
+    "react",
+    "react-hooks"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0 <20.0.0",
+    "react-dom": ">=18.2.0 <20.0.0",
+    "react-router-dom": ">=5.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "5.0.1",
+    "@babel/core": "7.21.0",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-react": "7.18.6",
+    "@babel/register": "^7.21.0",
+    "@semantic-release/changelog": "6.0.2",
+    "@semantic-release/commit-analyzer": "9.0.2",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "8.0.7",
+    "@semantic-release/npm": "9.0.2",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/react-hooks": "6.0.0",
+    "@types/lodash.debounce": "4.0.7",
+    "@types/lodash.throttle": "4.1.7",
+    "@types/react-router-dom": "5.3.3",
+    "antd": "5.3.1",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-istanbul": "^6.1.1",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
+    "chai": "^4.3.7",
+    "css-loader": "^6.7.3",
+    "eslint": "8.36.0",
+    "eslint-config-standard-with-typescript": "34.0.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "15.6.1",
+    "eslint-plugin-promise": "6.1.1",
+    "eslint-plugin-react": "7.32.2",
+    "glob": "^9.2.1",
+    "husky": "^8.0.3",
+    "jsdoc-to-markdown": "^8.0.0",
+    "jsdom": "^21.1.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "10.2.0",
+    "mock-local-storage": "1.1.23",
+    "mutation-observer": "1.0.3",
+    "nyc": "^15.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "5.3.4",
+    "react-styleguidist": "13.1.1",
+    "regenerator-runtime": "0.13.11",
+    "rxjs": "7.8.0",
+    "semantic-release": "^20.1.1",
+    "sinon": "^15.0.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "9.4.2",
+    "typescript": "5.8.3",
+    "url-loader": "^4.1.1",
+    "webpack": "5.76.1"
+  },
+  "exports": {
+    "./useWindowScroll": {
+      "import": "./dist/esm/useWindowScroll.js",
+      "require": "./dist/useWindowScroll.js",
+      "types": "./dist/useWindowScroll.d.ts"
+    },
+    "./useWindowResize": {
+      "import": "./dist/esm/useWindowResize.js",
+      "require": "./dist/useWindowResize.js",
+      "types": "./dist/useWindowResize.d.ts"
+    },
+    "./useWillUnmount": {
+      "import": "./dist/esm/useWillUnmount.js",
+      "require": "./dist/useWillUnmount.js",
+      "types": "./dist/useWillUnmount.d.ts"
+    },
+    "./useViewportState": {
+      "import": "./dist/esm/useViewportState.js",
+      "require": "./dist/useViewportState.js",
+      "types": "./dist/useViewportState.d.ts"
+    },
+    "./useViewportSpy": {
+      "import": "./dist/esm/useViewportSpy.js",
+      "require": "./dist/useViewportSpy.js",
+      "types": "./dist/useViewportSpy.d.ts"
+    },
+    "./useVerticalSwipe": {
+      "import": "./dist/esm/useVerticalSwipe.js",
+      "require": "./dist/useVerticalSwipe.js",
+      "types": "./dist/useVerticalSwipe.d.ts"
+    },
+    "./useValueHistory": {
+      "import": "./dist/esm/useValueHistory.js",
+      "require": "./dist/useValueHistory.js",
+      "types": "./dist/useValueHistory.d.ts"
+    },
+    "./useValidatedState": {
+      "import": "./dist/esm/useValidatedState.js",
+      "require": "./dist/useValidatedState.js",
+      "types": "./dist/useValidatedState.d.ts"
+    },
+    "./useUpdateEffect": {
+      "import": "./dist/esm/useUpdateEffect.js",
+      "require": "./dist/useUpdateEffect.js",
+      "types": "./dist/useUpdateEffect.d.ts"
+    },
+    "./useUnmount": {
+      "import": "./dist/esm/useUnmount.js",
+      "require": "./dist/useUnmount.js",
+      "types": "./dist/useUnmount.d.ts"
+    },
+    "./useURLSearchParams": {
+      "import": "./dist/esm/useURLSearchParams.js",
+      "require": "./dist/useURLSearchParams.js",
+      "types": "./dist/useURLSearchParams.d.ts"
+    },
+    "./useTouchState": {
+      "import": "./dist/esm/useTouchState.js",
+      "require": "./dist/useTouchState.js",
+      "types": "./dist/useTouchState.d.ts"
+    },
+    "./useTouchEvents": {
+      "import": "./dist/esm/useTouchEvents.js",
+      "require": "./dist/useTouchEvents.js",
+      "types": "./dist/useTouchEvents.d.ts"
+    },
+    "./useTouch": {
+      "import": "./dist/esm/useTouch.js",
+      "require": "./dist/useTouch.js",
+      "types": "./dist/useTouch.d.ts"
+    },
+    "./useToggle": {
+      "import": "./dist/esm/useToggle.js",
+      "require": "./dist/useToggle.js",
+      "types": "./dist/useToggle.d.ts"
+    },
+    "./useTimeout": {
+      "import": "./dist/esm/useTimeout.js",
+      "require": "./dist/useTimeout.js",
+      "types": "./dist/useTimeout.d.ts"
+    },
+    "./useThrottledCallback": {
+      "import": "./dist/esm/useThrottledCallback.js",
+      "require": "./dist/useThrottledCallback.js",
+      "types": "./dist/useThrottledCallback.d.ts"
+    },
+    "./useSystemVoices": {
+      "import": "./dist/esm/useSystemVoices.js",
+      "require": "./dist/useSystemVoices.js",
+      "types": "./dist/useSystemVoices.d.ts"
+    },
+    "./useSwipeEvents": {
+      "import": "./dist/esm/useSwipeEvents.js",
+      "require": "./dist/useSwipeEvents.js",
+      "types": "./dist/useSwipeEvents.d.ts"
+    },
+    "./useSwipe": {
+      "import": "./dist/esm/useSwipe.js",
+      "require": "./dist/useSwipe.js",
+      "types": "./dist/useSwipe.d.ts"
+    },
+    "./useSpeechSynthesis": {
+      "import": "./dist/esm/useSpeechSynthesis.js",
+      "require": "./dist/useSpeechSynthesis.js",
+      "types": "./dist/useSpeechSynthesis.d.ts"
+    },
+    "./useSpeechRecognition": {
+      "import": "./dist/esm/useSpeechRecognition.js",
+      "require": "./dist/useSpeechRecognition.js",
+      "types": "./dist/useSpeechRecognition.d.ts"
+    },
+    "./useSessionStorage": {
+      "import": "./dist/esm/useSessionStorage.js",
+      "require": "./dist/useSessionStorage.js",
+      "types": "./dist/useSessionStorage.d.ts"
+    },
+    "./useSearchQuery": {
+      "import": "./dist/esm/useSearchQuery.js",
+      "require": "./dist/useSearchQuery.js",
+      "types": "./dist/useSearchQuery.d.ts"
+    },
+    "./useResizeObserver": {
+      "import": "./dist/esm/useResizeObserver.js",
+      "require": "./dist/useResizeObserver.js",
+      "types": "./dist/useResizeObserver.d.ts"
+    },
+    "./useRequestAnimationFrame": {
+      "import": "./dist/esm/useRequestAnimationFrame.js",
+      "require": "./dist/useRequestAnimationFrame.js",
+      "types": "./dist/useRequestAnimationFrame.d.ts"
+    },
+    "./useRenderInfo": {
+      "import": "./dist/esm/useRenderInfo.js",
+      "require": "./dist/useRenderInfo.js",
+      "types": "./dist/useRenderInfo.d.ts"
+    },
+    "./useQueryParams": {
+      "import": "./dist/esm/useQueryParams.js",
+      "require": "./dist/useQueryParams.js",
+      "types": "./dist/useQueryParams.d.ts"
+    },
+    "./useQueryParam": {
+      "import": "./dist/esm/useQueryParam.js",
+      "require": "./dist/useQueryParam.js",
+      "types": "./dist/useQueryParam.d.ts"
+    },
+    "./usePreviousValue": {
+      "import": "./dist/esm/usePreviousValue.js",
+      "require": "./dist/usePreviousValue.js",
+      "types": "./dist/usePreviousValue.d.ts"
+    },
+    "./useOnlineState": {
+      "import": "./dist/esm/useOnlineState.js",
+      "require": "./dist/useOnlineState.js",
+      "types": "./dist/useOnlineState.d.ts"
+    },
+    "./useObservable": {
+      "import": "./dist/esm/useObservable.js",
+      "require": "./dist/useObservable.js",
+      "types": "./dist/useObservable.d.ts"
+    },
+    "./useObjectState": {
+      "import": "./dist/esm/useObjectState.js",
+      "require": "./dist/useObjectState.js",
+      "types": "./dist/useObjectState.d.ts"
+    },
+    "./useMutationObserver": {
+      "import": "./dist/esm/useMutationObserver.js",
+      "require": "./dist/useMutationObserver.js",
+      "types": "./dist/useMutationObserver.d.ts"
+    },
+    "./useMutableState": {
+      "import": "./dist/esm/useMutableState.js",
+      "require": "./dist/useMutableState.js",
+      "types": "./dist/useMutableState.d.ts"
+    },
+    "./useMouseState": {
+      "import": "./dist/esm/useMouseState.js",
+      "require": "./dist/useMouseState.js",
+      "types": "./dist/useMouseState.d.ts"
+    },
+    "./useMouseEvents": {
+      "import": "./dist/esm/useMouseEvents.js",
+      "require": "./dist/useMouseEvents.js",
+      "types": "./dist/useMouseEvents.d.ts"
+    },
+    "./useMouse": {
+      "import": "./dist/esm/useMouse.js",
+      "require": "./dist/useMouse.js",
+      "types": "./dist/useMouse.d.ts"
+    },
+    "./useMediaQuery": {
+      "import": "./dist/esm/useMediaQuery.js",
+      "require": "./dist/useMediaQuery.js",
+      "types": "./dist/useMediaQuery.d.ts"
+    },
+    "./useLongPress": {
+      "import": "./dist/esm/useLongPress.js",
+      "require": "./dist/useLongPress.js",
+      "types": "./dist/useLongPress.d.ts"
+    },
+    "./useLocalStorage": {
+      "import": "./dist/esm/useLocalStorage.js",
+      "require": "./dist/useLocalStorage.js",
+      "types": "./dist/useLocalStorage.d.ts"
+    },
+    "./useLifecycle": {
+      "import": "./dist/esm/useLifecycle.js",
+      "require": "./dist/useLifecycle.js",
+      "types": "./dist/useLifecycle.d.ts"
+    },
+    "./useIsFirstRender": {
+      "import": "./dist/esm/useIsFirstRender.js",
+      "require": "./dist/useIsFirstRender.js",
+      "types": "./dist/useIsFirstRender.d.ts"
+    },
+    "./useInterval": {
+      "import": "./dist/esm/useInterval.js",
+      "require": "./dist/useInterval.js",
+      "types": "./dist/useInterval.d.ts"
+    },
+    "./useInfiniteScroll": {
+      "import": "./dist/esm/useInfiniteScroll.js",
+      "require": "./dist/useInfiniteScroll.js",
+      "types": "./dist/useInfiniteScroll.d.ts"
+    },
+    "./useHorizontalSwipe": {
+      "import": "./dist/esm/useHorizontalSwipe.js",
+      "require": "./dist/useHorizontalSwipe.js",
+      "types": "./dist/useHorizontalSwipe.d.ts"
+    },
+    "./useGlobalEvent": {
+      "import": "./dist/esm/useGlobalEvent.js",
+      "require": "./dist/useGlobalEvent.js",
+      "types": "./dist/useGlobalEvent.d.ts"
+    },
+    "./useGeolocationState": {
+      "import": "./dist/esm/useGeolocationState.js",
+      "require": "./dist/useGeolocationState.js",
+      "types": "./dist/useGeolocationState.d.ts"
+    },
+    "./useGeolocationEvents": {
+      "import": "./dist/esm/useGeolocationEvents.js",
+      "require": "./dist/useGeolocationEvents.js",
+      "types": "./dist/useGeolocationEvents.d.ts"
+    },
+    "./useGeolocation": {
+      "import": "./dist/esm/useGeolocation.js",
+      "require": "./dist/useGeolocation.js",
+      "types": "./dist/useGeolocation.d.ts"
+    },
+    "./useEvent": {
+      "import": "./dist/esm/useEvent.js",
+      "require": "./dist/useEvent.js",
+      "types": "./dist/useEvent.d.ts"
+    },
+    "./useDropZone": {
+      "import": "./dist/esm/useDropZone.js",
+      "require": "./dist/useDropZone.js",
+      "types": "./dist/useDropZone.d.ts"
+    },
+    "./useDragEvents": {
+      "import": "./dist/esm/useDragEvents.js",
+      "require": "./dist/useDragEvents.js",
+      "types": "./dist/useDragEvents.d.ts"
+    },
+    "./useDrag": {
+      "import": "./dist/esm/useDrag.js",
+      "require": "./dist/useDrag.js",
+      "types": "./dist/useDrag.d.ts"
+    },
+    "./useDidMount": {
+      "import": "./dist/esm/useDidMount.js",
+      "require": "./dist/useDidMount.js",
+      "types": "./dist/useDidMount.d.ts"
+    },
+    "./useDefaultedState": {
+      "import": "./dist/esm/useDefaultedState.js",
+      "require": "./dist/useDefaultedState.js",
+      "types": "./dist/useDefaultedState.d.ts"
+    },
+    "./useDebouncedCallback": {
+      "import": "./dist/esm/useDebouncedCallback.js",
+      "require": "./dist/useDebouncedCallback.js",
+      "types": "./dist/useDebouncedCallback.d.ts"
+    },
+    "./useDarkMode": {
+      "import": "./dist/esm/useDarkMode.js",
+      "require": "./dist/useDarkMode.js",
+      "types": "./dist/useDarkMode.d.ts"
+    },
+    "./useCookie": {
+      "import": "./dist/esm/useCookie.js",
+      "require": "./dist/useCookie.js",
+      "types": "./dist/useCookie.d.ts"
+    },
+    "./useConditionalTimeout": {
+      "import": "./dist/esm/useConditionalTimeout.js",
+      "require": "./dist/useConditionalTimeout.js",
+      "types": "./dist/useConditionalTimeout.d.ts"
+    },
+    "./useAudio": {
+      "import": "./dist/esm/useAudio.js",
+      "require": "./dist/useAudio.js",
+      "types": "./dist/useAudio.d.ts"
+    }
+  }
+}
